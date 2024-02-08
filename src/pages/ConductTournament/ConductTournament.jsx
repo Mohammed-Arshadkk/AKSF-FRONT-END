@@ -6,6 +6,7 @@ const ConductTournament = () => {
     const [formData, setFormData] = useState({
         clubName: '',
         place: '',
+        phoneNuber: '',
         startDate: '',
         endDate: '',
         secretaryName: '',
@@ -35,12 +36,17 @@ const ConductTournament = () => {
 
                 <div className="mb-4">
                     <label htmlFor="clubName" className="block text-sm font-semibold mb-1">Club Name:</label>
-                    <input type="text" id="clubName" name="clubName" value={formData.clubName} onChange={handleChange} className="w-full px-4 py-2 rounded border" required />
+                    <input type="text" id="clubName" name="clubName" value={formData.clubName} onChange={handleChange} className="w-full px-4 py-2 rounded border text-black" required />
                 </div>
 
                 <div className="mb-4">
                     <label htmlFor="place" className="block text-sm font-semibold mb-1">Place:</label>
                     <input type="text" id="place" name="place" value={formData.place} onChange={handleChange} className="w-full px-4 py-2 rounded border" required />
+                </div>
+
+                <div className="mb-4">
+                    <label htmlFor="place" className="block text-sm font-semibold mb-1">Phone Number:</label>
+                    <input type="text" id="number" name="place" value={formData.place} onChange={handleChange} className="w-full px-4 py-2 rounded border" required />
                 </div>
 
                 <div className="mb-4">

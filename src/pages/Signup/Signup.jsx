@@ -9,6 +9,7 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [number, setPhoneNumber] = useState("");
   // console.log(userName,email,password,confirmPassword)
 
   // regex Validation
@@ -37,10 +38,11 @@ const Signup = () => {
       setError("password does not match");
     }
     try {
-      await axios.post("http://localhost:3000/auth/signup", {
+      await axios.post("http://localhost:5000/signup", {
         userName,
         email,
         password,
+        number,
       });
     } catch (e) {
       console.log("error is occured", error);
@@ -105,7 +107,6 @@ const Signup = () => {
             id="password"
             name="password"
             placeholder="Enter your password"
-            onBlur={passwordValidation}
             onChange={(e) => setPassword(e.target.value)}
             required
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
@@ -128,12 +129,32 @@ const Signup = () => {
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
           />
         </div>
+
+        <div className="mb-4">
+          <label
+            htmlFor="Phone Number"
+            className="block text-white text-sm font-semibold mb-2"
+          >
+            Phone Number:
+          </label>
+          <input
+            type="number"
+            id="Phone Number"
+            name="Phone Number"
+            placeholder="Enter your Phone Number"
+            onChange={(e) => setPhoneNumber(e.target.value)}
+            required
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+          />
+        </div>
         <div className="flex justify-center">
           <button
             type="submit"
             className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 focus:outline-none focus:shadow-outline-green"
           >
-            Sign Up
+            <Link >
+              Sign Up
+            </Link>
           </button>
         </div>
         <div className="flex justify-center">

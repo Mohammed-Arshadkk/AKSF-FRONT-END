@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import rain from "../../assets/black.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
-  const [userName, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [userName, setUsername] = useState("Mohammed Arshad kk");
+  const [email, setEmail] = useState("mohammedarshad62820@gmail.com");
+  const [password, setPassword] = useState("Arshad@123");
+  const [confirmPassword, setConfirmPassword] = useState("Arshad@123");
   const [error, setError] = useState("");
-  const [number, setPhoneNumber] = useState("");
-  // console.log(userName,email,password,confirmPassword)
+  // const [number, setPhoneNumber] = useState("");
+
+  const navigate = useNavigate();
 
   // regex Validation
   function regexValidtion(password) {
@@ -23,6 +25,7 @@ const Signup = () => {
       setError(
         "Password must contain at least 8 characters, including at least one uppercase letter, one lowercase letter, one number, and one special character "
       );
+      return
     }
   }
 
@@ -30,22 +33,31 @@ const Signup = () => {
   function passwordValidation() {
     regexValidtion(password);
   }
+
   async function handleSubmit(e) {
     e.preventDefault();
-    if (password == confirmPassword) {
+    if (password === confirmPassword) {
       setError("");
     } else {
       setError("password does not match");
+      return
     }
     try {
-      await axios.post("http://localhost:5000/signup", {
+      const response = await axios.post("http://localhost:5000/signup", {
         userName,
         email,
         password,
-        number,
+        // number,
       });
+
+      if (response.data.message) {
+        navigate("/home");
+      } else {
+        setError(response.data.error);
+      }
     } catch (e) {
-      console.log("error is occured", error);
+        setError(e.response.data.error);
+        console.log("error is occured", e);
     }
   }
 
@@ -73,6 +85,7 @@ const Signup = () => {
             id="username"
             name="username"
             placeholder="Enter your username"
+            value={userName}
             onChange={(e) => setUsername(e.target.value)}
             required
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
@@ -90,6 +103,7 @@ const Signup = () => {
             id="email"
             name="email"
             placeholder="Enter your email"
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
@@ -107,6 +121,8 @@ const Signup = () => {
             id="password"
             name="password"
             placeholder="Enter your password"
+            value={password}
+            onBlur={passwordValidation}
             onChange={(e) => setPassword(e.target.value)}
             required
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
@@ -124,13 +140,14 @@ const Signup = () => {
             id="confirmPassword"
             name="confirmPassword"
             placeholder="Confirm your password"
+            value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
           />
         </div>
 
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label
             htmlFor="Phone Number"
             className="block text-white text-sm font-semibold mb-2"
@@ -146,15 +163,13 @@ const Signup = () => {
             required
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
           />
-        </div>
+        </div> */}
         <div className="flex justify-center">
           <button
             type="submit"
             className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 focus:outline-none focus:shadow-outline-green"
           >
-            <Link >
-              Sign Up
-            </Link>
+            Sign Up
           </button>
         </div>
         <div className="flex justify-center">
@@ -179,5 +194,4 @@ const Signup = () => {
     </div>
   );
 };
-
 export default Signup;

@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import black from '../../assets/black.png'
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+
+const Login = () =>{
+  const navigate=useNavigate()
   const [formData, setFormData] = useState({
-    username: '',
-    password: ''
+    username: 'Mohammed Arshad kk',
+    password: 'Arshad@1234'
   });
+
+  const [error,setError] =useState('')
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -15,16 +21,29 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault();
-    // Add logic for login (e.g., API call, validation, etc.)
+    try {
+      const response = await axios.post("http://localhost:5000/login",formData)
     console.log('Login submitted:', formData);
-  };
+    console.log(response);
+    if(response.status == 200){
+      navigate("/home")
+    }
+    
 
-  const handleForgotPassword = () => {
-    // Add logic for handling forgot password (e.g., redirect to a forgot password page)
-    console.log('Forgot Password clicked');
-  };
+  }catch (e) {
+    if(e.response&&e.response.data.message){
+      setError(e.response.data.message)
+    }else{
+      setError(e.response.data.error);
+      console.log("error is occured", e);
+    }
+   
+  }
+  }
+  
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center" style={{backgroundImage:`url(${black})`,backgroundSize:"cover"}}>
@@ -64,7 +83,19 @@ const Login = () => {
             <input type="checkbox" id="rememberMe" className="mr-2" />
             <label htmlFor="rememberMe" className="text-white">Remember me</label>
           </div>
-          <a href="#" className="text-blue-300 hover:underline" onClick={handleForgotPassword}>Forgot Password?</a>
+          <a href="#" className="text-blue-300 hover:underline" onClick="">Forgot Password?</a>
+        </div>
+         
+        <div>
+          {
+            error && (
+              <div className='flex  justify-center text-red-500'>
+                {
+                  error
+                }
+              </div>
+            )
+          }
         </div>
 
         <div className="flex justify-center">
@@ -82,4 +113,5 @@ const Login = () => {
   );
 };
 
-export default Login;
+
+export default Login

@@ -4,13 +4,15 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+
 const Signup = () => {
-  const [userName, setUsername] = useState("Mohammed Arshad kk");
-  const [email, setEmail] = useState("mohammedarshad62820@gmail.com");
-  const [password, setPassword] = useState("Arshad@123");
-  const [confirmPassword, setConfirmPassword] = useState("Arshad@123");
+  const [userName, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   // const [number, setPhoneNumber] = useState("");
+
 
   const navigate = useNavigate();
 
@@ -25,7 +27,7 @@ const Signup = () => {
       setError(
         "Password must contain at least 8 characters, including at least one uppercase letter, one lowercase letter, one number, and one special character "
       );
-      return
+      return;
     }
   }
 
@@ -40,24 +42,28 @@ const Signup = () => {
       setError("");
     } else {
       setError("password does not match");
-      return
+      return;
     }
     try {
-      const response = await axios.post("http://localhost:5000/signup", {
+      const response = await axios.post("http://localhost:5002/signup", {
         userName,
         email,
         password,
         // number,
       });
 
-      if (response.data.message) {
+      if (response.status===200) {
+        const Token = response.data.token
+        console.log("Tok:",Token);
+        localStorage.setItem("jwt",Token)
+
         navigate("/home");
       } else {
         setError(response.data.error);
       }
     } catch (e) {
-        setError(e.response.data.error);
-        console.log("error is occured", e);
+      setError(e.response.data.error);
+      console.log("error is occured", e);
     }
   }
 

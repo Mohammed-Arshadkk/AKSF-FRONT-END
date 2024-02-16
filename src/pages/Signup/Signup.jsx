@@ -11,7 +11,6 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
-  // const [number, setPhoneNumber] = useState("");
 
 
   const navigate = useNavigate();
@@ -45,11 +44,10 @@ const Signup = () => {
       return;
     }
     try {
-      const response = await axios.post("http://localhost:5002/signup", {
+      const response = await axios.post("http://localhost:5000/signup", {
         userName,
         email,
         password,
-        // number,
       });
 
       if (response.status===200) {
@@ -153,23 +151,7 @@ const Signup = () => {
           />
         </div>
 
-        {/* <div className="mb-4">
-          <label
-            htmlFor="Phone Number"
-            className="block text-white text-sm font-semibold mb-2"
-          >
-            Phone Number:
-          </label>
-          <input
-            type="number"
-            id="Phone Number"
-            name="Phone Number"
-            placeholder="Enter your Phone Number"
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            required
-            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
-          />
-        </div> */}
+    
         <div className="flex justify-center">
           <button
             type="submit"

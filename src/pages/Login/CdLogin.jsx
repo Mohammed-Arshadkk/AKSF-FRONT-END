@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import black from '../../assets/bulb.png'
+import black from '../../assets/black.png'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const CdLogin = () =>{
@@ -24,7 +24,7 @@ const CdLogin = () =>{
   const handleSubmit =async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5002/conductTournament/Cdlogin",formData)
+      const response = await axios.post("http://localhost:5000/conductTournament/Cdlogin",formData)
     console.log('Login submitted:', formData);
     console.log(response);
     if(response.status === 200){
@@ -41,7 +41,6 @@ const CdLogin = () =>{
    
   }
   }
-  
 
   return (
     <div className="min-h-screen flex items-center justify-center" style={{backgroundImage:`url(${black})`,backgroundSize:"cover"}}>
@@ -81,7 +80,7 @@ const CdLogin = () =>{
             <input type="checkbox" id="rememberMe" className="mr-2" />
             <label htmlFor="rememberMe" className="text-white">Remember me</label>
           </div>
-          <a href="#" className="text-blue-300 hover:underline" onClick="">Forgot Password?</a>
+          <Link to={"/forgotPassword"}  className="text-blue-300 hover:underline" onClick="">Forgot Password?</Link>
         </div>
          
         <div>

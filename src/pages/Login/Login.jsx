@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import black from '../../assets/black.png'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const Login = () =>{
   const navigate=useNavigate()
   const [formData, setFormData] = useState({
-    username: 'Mohammed Arshad kk',
-    password: 'Arshad@1234'
+    username: '',
+    password: ''
   });
 
   const [error,setError] =useState('')
@@ -24,7 +24,7 @@ const Login = () =>{
   const handleSubmit =async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5002/login",formData)
+      const response = await axios.post("http://localhost:5000/login",formData)
     console.log('Login submitted:', formData);
     console.log(response);
     if(response.status == 200){
@@ -83,7 +83,7 @@ const Login = () =>{
             <input type="checkbox" id="rememberMe" className="mr-2" />
             <label htmlFor="rememberMe" className="text-white">Remember me</label>
           </div>
-          <a href="#" className="text-blue-300 hover:underline" onClick="">Forgot Password?</a>
+          <Link to={"/forgotPassword"} className="text-blue-300 hover:underline">Forgot Password?</Link>
         </div>
          
         <div>

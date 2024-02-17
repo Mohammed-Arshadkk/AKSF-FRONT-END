@@ -4,14 +4,12 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-
 const Signup = () => {
   const [userName, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
-
 
   const navigate = useNavigate();
 
@@ -50,10 +48,10 @@ const Signup = () => {
         password,
       });
 
-      if (response.status===200) {
-        const Token = response.data.token
-        console.log("Tok:",Token);
-        localStorage.setItem("jwt",Token)
+      if (response.status === 200) {
+        const Token = response.data.token;
+        console.log("Tok:", Token);
+        localStorage.setItem("jwt", Token);
 
         navigate("/home");
       } else {
@@ -151,7 +149,6 @@ const Signup = () => {
           />
         </div>
 
-    
         <div className="flex justify-center">
           <button
             type="submit"

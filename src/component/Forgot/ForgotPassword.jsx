@@ -7,7 +7,7 @@ const ForgotPassword = () => {
   const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  const [canSendOTP, setCanSendOTP] = useState(true); // Add a state to control whether OTP can be sent
+  const [canSendOTP, setCanSendOTP] = useState(true); 
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -17,47 +17,48 @@ const ForgotPassword = () => {
   const sendOtp = async (e) => {
     e.preventDefault();
     try {
-      console.log(email);
       if (!canSendOTP) {
-        setError(
-          "You have already sent an OTP. Please wait before sending another."
-        );
+        setError("You have already sent an OTP. Please wait before sending another.");
         return;
       }
-
-      // Check if the email is already signed in your database
+  
       const response = await axios.post("http://localhost:5000/sendotp", {
         email,
       });
-      if (response.status === 200 && response.data.exists) {
-        if (response.status === 200) {
+  
+      if (response.status === 200) {
+        if (response.data.message === "OTP Sent Successfully") {
           setSuccessMessage("OTP sent successfully!");
           setCanSendOTP(false);
+          setError("")
         } else {
           setError("Failed to send OTP. Please try again later.");
         }
       } else {
-        setError("Email not found in database.");
+        setError("Error occurred while sending OTP.");
       }
     } catch (error) {
       setError("Error occurred while sending OTP.");
     }
   };
+  
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   // Verify OTP logic
-  //   try {
-  //     const response = await axios.post("/verify-otp", { email, otp });
-  //     if (response.status === 200 && response.data.valid) {
-  //       setSuccessMessage("OTP verified successfully!");
-  //     } else {
-  //       setError("Invalid OTP. Please try again.");
-  //     }
-  //   } catch (error) {
-  //     setError("Error occurred while verifying OTP.");
-  //   }
-  // };
+  // eslint-disable-next-line no-unused-vars
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:5000/verify-otp", { email, otp });
+      if (response.status === 200 && response.data.valid) {
+        setSuccessMessage("OTP verified successfully!");
+        // Here you can proceed with further actions like allowing the user to reset the password.
+      } else {
+        setError("Invalid OTP. Please try again.");
+      }
+    } catch (error) {
+      setError("Error occurred while verifying OTP.");
+    }
+  };
+  
 
   return (
     <div
@@ -121,7 +122,7 @@ const ForgotPassword = () => {
         </div>
 
         <button
-          // onClick={handleSubmit}
+          onClick={handleSubmit}
           className="w-full border-2 text-white py-2 rounded-md hover:bg-blue-600"
         >
           Verify OTP

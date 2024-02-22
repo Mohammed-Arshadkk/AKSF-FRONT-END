@@ -8,6 +8,8 @@ import CommitteeHome from '../pages/CommitteHome/CommitteeHome'
 import CdLogin from '../pages/Login/CdLogin'
 import ForgotPassword from '../component/Forgot/ForgotPassword'
 import ResetPasswordForm from '../component/Forgot/Resetpassword'
+import TeamStats from '../component/TeamStats'
+
 
 function UserRouter() {
   return (
@@ -21,6 +23,8 @@ function UserRouter() {
         <Route path='/Cdlogin' element={<CdLogin />}></Route>
         <Route path='/forgotPassword' element={<ForgotPassword />}></Route>
         <Route path='/ResetPassword' element={<ResetPasswordForm />}></Route>
+        <Route path='/teamstats' element={<TeamStats />}></Route>
+        
 
       </Routes>
     </>

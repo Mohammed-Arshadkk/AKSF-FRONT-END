@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import logo from "../../assets/red.png";
 import { Link } from "react-router-dom";
 
+// eslint-disable-next-line react/prop-types
 function Header({ isLoggedIn }) {
   const [showNewsDropdown, setShowNewsDropdown] = useState(false);
   const [showStatsDropdown, setShowStatsDropdown] = useState(false);

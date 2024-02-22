@@ -55,7 +55,7 @@ const ConductTournament = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/conductTournament/conductTournament",
+        "http://localhost:5000/conduct-tournament",
         formData
       );
       console.log("Response:", response);

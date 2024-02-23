@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import bg from '../assets/ground.png'
 import Argentina from '../assets/Argentina.webp'

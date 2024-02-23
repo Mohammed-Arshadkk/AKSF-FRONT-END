@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import logo from "../../assets/red.png";
 import { Link } from "react-router-dom";
@@ -15,7 +16,7 @@ function Header({ isLoggedIn }) {
     setShowStatsDropdown(!showStatsDropdown);
   };
 
-  const handleLinkClick = (path) => {
+  const handleLinkClick = () => {
     if (!isLoggedIn) {
        alert("Please sign up or log in to access this feature!");
     }

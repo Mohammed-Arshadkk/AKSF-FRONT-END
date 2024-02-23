@@ -15,6 +15,7 @@ function UserRouter() {
   return (
     <>
       <Routes>
+
         <Route path='/home' element={<Home/>}></Route>
         <Route path='/signup' element={<Signup />}></Route>
         <Route path='/login' element={<Login />}></Route>
@@ -25,7 +26,7 @@ function UserRouter() {
         <Route path='/ResetPassword' element={<ResetPasswordForm />}></Route>
         <Route path='/teamstats' element={<TeamStats />}></Route>
         
-
+        
       </Routes>
     </>
   )

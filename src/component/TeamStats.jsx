@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 
 function TeamStats() {
   return (
     <>
       <div className="flex flex-col items-center justify-center w-screen min-h-screen bg-gray-900 py-10">
-        <h1 className="text-lg text-gray-400 font-medium">2020-21 Season</h1>
+        <h1 className="text-lg text-gray-400 font-medium">2023-24 Season</h1>
         <div className="flex flex-col mt-6">
           <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">

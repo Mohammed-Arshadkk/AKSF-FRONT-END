@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import axios from "axios";
 import black from "../../assets/black.png";
@@ -43,7 +44,7 @@ const ForgotPassword = () => {
   };
   
 
-  // eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line no-unused-vars 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -96,7 +97,7 @@ const ForgotPassword = () => {
         <button
           onClick={sendOtp}
           disabled={!canSendOTP} // Disable the button if canSendOTP is false
-          className={`w-full text-white border-2 py-2 rounded-md mb-4 ${
+          className={`w-full text-white border-2 py-2 rounded-md mb-4 hover:bg-blue-500 ${
             !canSendOTP && "opacity-50 cursor-not-allowed"
           }`} // Add opacity and cursor style when disabled
         >

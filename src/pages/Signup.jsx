@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
-import rain from "../../assets/black.png";
+import rain from "../assets/black.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -54,7 +54,7 @@ const Signup = () => {
         console.log("Tok:", Token);
         localStorage.setItem("jwt", Token);
 
-        navigate("/home");
+        navigate("/user/home");
       } else {
         setError(response.data.error);
       }
@@ -168,7 +168,7 @@ const Signup = () => {
             If you already have an account,{" "}
             <Link
               href="/login"
-              to={"/login"}
+              to={"/user/login"}
               className="hover:underline text-cyan-500"
             >
               login here

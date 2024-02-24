@@ -7,9 +7,9 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/*" element={<UserRouter />}></Route>
-          <Route path="/*" element={<AdminRouter />}></Route>
-          </Routes>
+          <Route path="/user/*" element={<UserRouter />} />
+          <Route path="/admin/*" element={<AdminRouter />} />
+        </Routes>
       </BrowserRouter>
       {/* < Home /> */}
       {/* <Signup /> */}

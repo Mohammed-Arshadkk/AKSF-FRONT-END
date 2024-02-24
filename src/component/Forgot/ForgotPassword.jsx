@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import black from "../../assets/black.png";
+import { useNavigate } from "react-router-dom";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -9,6 +10,8 @@ const ForgotPassword = () => {
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [canSendOTP, setCanSendOTP] = useState(true); 
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -49,8 +52,11 @@ const ForgotPassword = () => {
     e.preventDefault();
     try {
       const response = await axios.post("http://localhost:5000/verify-otp", { email, otp });
-      if (response.status === 200 && response.data.valid) {
+      if (response.status === 200) {
         setSuccessMessage("OTP verified successfully!");
+        navigate('/user/ResetPassword')
+        setError("")
+        
         // Here you can proceed with further actions like allowing the user to reset the password.
       } else {
         setError("Invalid OTP. Please try again.");

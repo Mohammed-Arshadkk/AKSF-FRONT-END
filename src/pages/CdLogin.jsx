@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import black from '../../assets/black.png'
+import black from '../assets/black.png'
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
 
-const Login = () =>{
+const CdLogin = () =>{
   const navigate=useNavigate()
   const [formData, setFormData] = useState({
-    username: '',
+    clubName: '',
     password: ''
   });
 
@@ -24,14 +24,13 @@ const Login = () =>{
   const handleSubmit =async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/login",formData)
+      const response = await axios.post("http://localhost:5000/conductTournament/Cdlogin",formData)
     console.log('Login submitted:', formData);
     console.log(response);
-    if(response.status == 200){
-      navigate("/home")
+    if(response.status === 200){
+      navigate("/CommitteeHome")
     }
-    
-
+  
   }catch (e) {
     if(e.response&&e.response.data.message){
       setError(e.response.data.message)
@@ -42,8 +41,6 @@ const Login = () =>{
    
   }
   }
-  
-  
 
   return (
     <div className="min-h-screen flex items-center justify-center" style={{backgroundImage:`url(${black})`,backgroundSize:"cover"}}>
@@ -51,13 +48,13 @@ const Login = () =>{
         <h2 className="text-2xl font-bold mb-6 text-center text-white">Login</h2>
 
         <div className="mb-4">
-          <label htmlFor="username" className="block text-white text-sm font-semibold mb-2">Username:</label>
+          <label htmlFor="clubName" className="block text-white text-sm font-semibold mb-2">Club Name:</label>
           <input
             type="text"
-            id="username"
-            name="username"
-            placeholder="Enter your username"
-            value={formData.username}
+            id="clubName"
+            name="clubName"
+            placeholder="Enter your clubName"
+            value={formData.clubName}
             onChange={handleChange}
             required
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
@@ -83,7 +80,7 @@ const Login = () =>{
             <input type="checkbox" id="rememberMe" className="mr-2" />
             <label htmlFor="rememberMe" className="text-white">Remember me</label>
           </div>
-          <Link to={"/forgotPassword"} className="text-blue-300 hover:underline">Forgot Password?</Link>
+          <Link to={"/user/forgotPassword"}  className="text-blue-300 hover:underline" onClick="">Forgot Password?</Link>
         </div>
          
         <div>
@@ -114,4 +111,4 @@ const Login = () =>{
 };
 
 
-export default Login
+export default CdLogin

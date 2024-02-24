@@ -1,8 +1,8 @@
 import React from 'react';
-import barcelona from '../../assets/barcelona.png';
-import real from '../../assets/real.png';
-import liverpool from '../../assets/liverpool1.png';
-import mm from '../../assets/mm.png';
+import barcelona from '../assets/barcelona.png';
+import real from '../assets/real.png';
+import liverpool from '../assets/liverpool1.png';
+import mm from '../assets/mm.png';
 
 const CommitteeHome = () => {
   // Sample data, replace with actual data

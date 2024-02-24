@@ -41,7 +41,7 @@ function Header({ isLoggedIn }) {
       onMouseLeave={toggleNewsDropdown}
     >
       <Link
-        to="/news"
+        to="/user/news"
         onClick={() => handleLinkClick("/news")} // Pass the path to handleLinkClick function
         className="text-white px-2 py-1 hover:underline font-bold group-hover:text-yellow-300"
       >
@@ -55,14 +55,14 @@ function Header({ isLoggedIn }) {
       )}
     </div>
     <Link
-      to="/scores"
+      to="/user/scores"
       onClick={() => handleLinkClick("/scores")}
       className="text-white px-2 py-1 hover:underline font-bold hover:text-yellow-300"
     >
       Scores
     </Link>
     <Link
-      to="/fixtures"
+      to="/user/fixtures"
       onClick={() => handleLinkClick("/fixtures")}
       className="text-white px-2 py-1 hover:underline font-bold hover:text-yellow-300"
     >
@@ -74,7 +74,7 @@ function Header({ isLoggedIn }) {
       onMouseLeave={toggleStatsDropdown}
     >
       <Link
-         to="/stats"
+         to="/user/stats"
          onClick={() => handleLinkClick("/stats")}
         className="text-white px-2 py-1 hover:underline font-bold group-hover:text-yellow-300"
       >
@@ -91,20 +91,20 @@ function Header({ isLoggedIn }) {
 
   <div className="flex flex-col md:flex-row md:items-center">
     <Link
-      to="/stats"
+      to="/user/stats"
       onClick={() => handleLinkClick("/stats")}
       className="text-white px-2 py-1 md:mr-4 hover:underline font-bold mb-2 md:mb-0 hover:text-yellow-300"
     >
       Watch Live
     </Link>
     <Link
-      href="#signup" to={"/signup"}
+      href="#signup" to={"/user/signup"}
       className="text-white mr-4 px-2 py-1 md:px-4 md:py-2 bg-green-500 rounded-md hover:bg-green-600 font-bold"
     >
       Signup
     </Link>
     <Link
-      to="/conduct-tournament"
+      to="/user/conduct-tournament"
       className="text-white px-2 py-1 md:px-4 md:py-2 bg-green-500 rounded-md hover:bg-green-600 font-bold"
     >
       Conduct Tournament

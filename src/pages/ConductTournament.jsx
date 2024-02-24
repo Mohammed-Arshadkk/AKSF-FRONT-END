@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ground from "../../assets/gr.png";
+import ground from "../assets/gr.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -296,7 +296,7 @@ const ConductTournament = () => {
         <div className="text-center mt-4 ">
           <p>
             If you already have an registered,{" "}
-            <a href="/Cdlogin" className="text-blue-400 hover:underline">
+            <a href="/user/Cdlogin" className="text-blue-400 hover:underline">
               login here
             </a>
           </p>

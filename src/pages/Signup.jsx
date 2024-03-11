@@ -14,7 +14,7 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
-  // regex Validation
+  // regex Validation 
   function regexValidtion(password) {
     const passwordRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -165,7 +165,7 @@ const Signup = () => {
         </div>
         <div className="text-center mt-4">
           <p className="text-white">
-            If you already have an account,{" "}
+            If you already have an account,{""}
             <Link
               href="/login"
               to={"/user/login"}

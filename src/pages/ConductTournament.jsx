@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import ground from "../assets/gr.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
 const ConductTournament = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -43,6 +42,7 @@ const ConductTournament = () => {
       return false;
     }
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -60,9 +60,9 @@ const ConductTournament = () => {
       );
       console.log("Response:", response);
       if (response.status === 200) {
-        navigate("/committeeHome");
+        navigate("/user/committeeHome");
       } else if (response.status === 400) {
-        console.log("hai");
+        setError("Admin has rejected the request.");
       }
     } catch (error) {
       setError(error.response.data.error);

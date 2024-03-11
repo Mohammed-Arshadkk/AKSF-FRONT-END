@@ -4,7 +4,7 @@ import React from 'react'
 function PlayerStats() {
   return (
     <div>
-      
+      player stats
     </div>
   )
 }

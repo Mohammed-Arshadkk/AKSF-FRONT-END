@@ -42,7 +42,7 @@ const ForgotPassword = () => {
         setError("Error occurred while sending OTP.");
       }
     } catch (error) {
-      setError("Error occurred while sending OTP.");
+      setError("The email is not correct");
     }
   };
   
@@ -51,10 +51,10 @@ const ForgotPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/verify-otp", { email, otp });
+      const response = await axios.post("http://localhost:5000/otpVerification", { email, otp });
       if (response.status === 200) {
         setSuccessMessage("OTP verified successfully!");
-        navigate('/user/ResetPassword')
+        navigate('/user/ResetPassword', { state: { email } })
         setError("")
         
         // Here you can proceed with further actions like allowing the user to reset the password.

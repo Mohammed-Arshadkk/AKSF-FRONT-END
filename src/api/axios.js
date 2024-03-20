@@ -16,14 +16,15 @@ axiosInstance.interceptors.request.use(
         if (token) {
             config.headers['Authorization'] = `Bearer ${token}`;
         }
-        config.withCredentials = true
+        
         console.log(config);
         console.log("front:", token);
         return config;
     },
     error => {
+        console.error('Interceptor error:', error);
         return Promise.reject(error);
     }
 );
 
-export default axiosInstance ;
+export default axiosInstance;

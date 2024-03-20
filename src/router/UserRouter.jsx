@@ -10,6 +10,8 @@ import ForgotPassword from '../component/Forgot/ForgotPassword'
 import ResetPasswordForm from '../component/Forgot/Resetpassword'
 import TeamStats from '../component/TeamStats'
 import UserProfile from '../pages/UserProfile'
+import Team from '../component/Team'
+import Score from '../component/Score'
 
 
 function UserRouter() {
@@ -26,6 +28,8 @@ function UserRouter() {
         <Route path='/forgotPassword' element={<ForgotPassword />}></Route>
         <Route path='/ResetPassword' element={<ResetPasswordForm />}></Route>
         <Route path='/teamstats' element={<TeamStats />}></Route>
+        <Route path='/teams' element={<Team />}></Route>
+        <Route path='/scores' element={<Score />}></Route>
         <Route path='/userProfile' element={<UserProfile />}></Route>
         
         

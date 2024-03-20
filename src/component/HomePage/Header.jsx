@@ -1,12 +1,14 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import logo from "../../assets/red.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 function Header({ isLoggedIn }) {
   const [showNewsDropdown, setShowNewsDropdown] = useState(false);
   const [showStatsDropdown, setShowStatsDropdown] = useState(false);
+
+  const navigate = useNavigate()
 
   const toggleNewsDropdown = () => {
     setShowNewsDropdown(!showNewsDropdown);
@@ -19,7 +21,9 @@ function Header({ isLoggedIn }) {
   const handleLinkClick = () => {
     if (!isLoggedIn) {
       alert("Please sign up or log in to access this feature!");
+    
     }
+   
   };
 
   return (

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ground from "../assets/gr.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
 const ConductTournament = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -56,7 +57,7 @@ const ConductTournament = () => {
     try {
       const response = await axios.post(
         "http://localhost:5000/conduct-tournament",
-        formData
+        {formData}
       );
       console.log("Response:", response);
       if (response.status === 200) {
@@ -116,7 +117,7 @@ const ConductTournament = () => {
             password:
           </label>
           <input
-            type="text"
+            type="password"
             id="password"
             name="password"
             value={formData.password}

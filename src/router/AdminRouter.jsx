@@ -6,7 +6,7 @@ function AdminRouter() {
   return (
     <div>
         <Routes>
-        <Route path='/adminHome' element={<AdminHome/>}></Route>
+        <Route path='/home' element={<AdminHome/>}></Route>
         </Routes>
     </div>
   )

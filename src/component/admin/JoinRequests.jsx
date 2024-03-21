@@ -42,43 +42,48 @@ const JoinRequests = ({ onApproval }) => {
 
   return (
     <div>
-      <div className="px-6 py-8">
-        <div className="max-w-4xl mx-auto">
-          {requests.map((request) => (
-            <div key={request._id} className="bg-white rounded-3xl  p-6  mb-5 ">
-              {/* Display error if any */}
-              {error && <div className="text-red-500">{error}</div>}
+    <div className="px-6 py-8">
+      <div className="max-w-4xl mx-auto">
+        {/* Display message when there are no requests */}
+        {requests.length === 0 && (
+          <div className="bg-red-500 text-white text-2xl font-semibold px-4 py-2 rounded">
+            No requests found
+          </div>
+        )}
 
-              {/* Display join request details */}
-              <div className="pb-6">
-                <h2 className="font-bold">Join Request Details</h2>
-                <p>Club Name: {request.clubName}</p>
-                <p>Phone Number: {request.phoneNumber}</p>
-              </div>
-              {/* Buttons to approve or reject join request */}
-              <div className="flex justify-between items-center">
-                <div>
-                  {/* Button to approve join request */}
-                  <button
-                    className="bg-green-500 text-white px-4 py-2 mr-2 rounded"
-                    onClick={() => handleApproval(request._id, "approve")}
-                  >
-                    Approve
-                  </button>
-                  {/* Button to reject join request */}
-                  <button
-                    className="bg-red-500 text-white px-4 py-2 rounded"
-                    onClick={() => handleApproval(request._id, "reject")}
-                  >
-                    Reject
-                  </button>
-                </div>
+        {requests.map((request) => (
+          <div key={request._id} className="bg-white rounded-3xl p-6 mb-5">
+            {/* Display join request details */}
+            <div className="pb-6">
+              <h2 className="font-bold">Join Request Details</h2>
+              <p>Club Name: {request.clubName}</p>
+              <p>Phone Number: {request.phoneNumber}</p>
+            </div>
+
+            {/* Buttons to approve or reject join request */}
+            <div className="flex justify-between items-center">
+              <div>
+                {/* Button to approve join request */}
+                <button
+                  className="bg-green-500 text-white px-4 py-2 mr-2 rounded"
+                  onClick={() => handleApproval(request._id, "approve")}
+                >
+                  Approve
+                </button>
+                {/* Button to reject join request */}
+                <button
+                  className="bg-red-500 text-white px-4 py-2 rounded"
+                  onClick={() => handleApproval(request._id, "reject")}
+                >
+                  Reject
+                </button>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
+  </div>
   );
 };
 

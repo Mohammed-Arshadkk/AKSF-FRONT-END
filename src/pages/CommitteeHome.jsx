@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import barcelona from '../assets/barcelona.png';
 import real from '../assets/real.png';
 import liverpool from '../assets/liverpool1.png';
 import mm from '../assets/mm.png';
 
 const CommitteeHome = () => {
-  // Sample data, replace with actual data
-  const winnersPrice = "$10,000";
-  const runnersPrice = "$5,000";
+  const [PrizeData, setPrizeData] = useState({winnersPrice: '', runnersPrice: ''});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http:/localhost:/')
+
+      } catch (error){
+
+      }
+    }
+  })
 
   return (
     <div className="bg-white text-white min-h-screen">

@@ -21,8 +21,8 @@ function Header({ isLoggedIn }) {
   const handleLinkClick = () => {
     if (!isLoggedIn) {
       alert("Please sign up or log in to access this feature!");
-    
     }
+    
    
   };
 

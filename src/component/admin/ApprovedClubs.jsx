@@ -3,14 +3,13 @@ import  { useEffect, useState } from "react";
 
 const ApprovedClubs = () => {
   const [clubs,setClubs] = useState([]);
-  const [reject,setReject]= useState(false)
   const [error,setError] = useState([]);
 
   useEffect(()=> {
     const fetchApprovedClubs = async () => {
       try {
         const response =await axios.get("http://localhost:5000/admin/approvedClubs");
-        setClubs(response.data.data)
+        setClubs(response.data.data)    
       } catch (error) {
         setError("Failed to fetch approved clubs");
         console.log(error);
@@ -19,18 +18,6 @@ const ApprovedClubs = () => {
     fetchApprovedClubs()
   }, [])
 
-  useEffect(() => {
-    const fetchRejectedClubs = async () => {
-      try {
-        const response = await axios.get("http://localhost:5000/admin/rejectedClubs");
-        setReject(response.data);
-      } catch (error) {
-        setError('Failed to fetch the Rejected Clubs');
-        console.log(error);
-      }
-    };
-    fetchRejectedClubs();
-  }, []);
   
 
   return (

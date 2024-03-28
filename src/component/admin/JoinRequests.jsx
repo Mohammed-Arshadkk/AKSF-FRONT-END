@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const JoinRequests = ({ onApproval }) => {
-  // Receive onApproval as a prop
+const JoinRequests = ({}) => {
+  
   const [error, setError] = useState("");
   const [requests, setRequests] = useState([]);
 
@@ -24,22 +24,19 @@ const JoinRequests = ({ onApproval }) => {
 
   const handleApproval = async (id, action) => {
     try {
-      const response = await axios.put(
+      const response = await axios.post(
         `http://localhost:5000/admin/approveRequests/${id}`,
         { action }
       );
-      console.log(response.data);
-      // After approval/rejection, fetch updated join requests
-      fetchJoinRequests();
-      if (action === "approve") {
-        onApproval(); 
-      }
+        
+      // Use callback form of setRequests to ensure correct state update
+      setRequests(prevRequests => prevRequests.filter((user) => user._id !== id));
     } catch (error) {
       setError("Failed to update join request status");
       console.error(error);
     }
   };
-
+  
   return (
     <div>
     <div className="px-6 py-8">

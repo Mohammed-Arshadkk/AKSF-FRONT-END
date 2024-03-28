@@ -1,23 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React  from 'react';
 import barcelona from '../assets/barcelona.png';
 import real from '../assets/real.png';
 import liverpool from '../assets/liverpool1.png';
 import mm from '../assets/mm.png';
 
 const CommitteeHome = () => {
-  // const [PrizeData, setPrizeData] = useState({winnersPrice: '', runnersPrice: ''});
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get('http:/localhost:/')
-
-  //     } catch (error){
-
-  //     }
-  //   }
-  // })
-
+ 
   return (
     <div className="bg-white text-white min-h-screen">
       <nav className="bg-red-800 p-4">

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ground from "../assets/gr.png";
-import axios from "axios";
 import axiosInstance from "../api/axios";
 import { useNavigate } from "react-router-dom";
 
@@ -58,9 +57,11 @@ const ConductTournament = () => {
     try {
       // const checkVerified = await axiosInstance.get('http://localhost:5000/admin/verified');
       // console.log(checkVerified.data.verified);
-      const response = await axios.post(
-        "http://localhost:5000/conduct-tournament",
-        {formData}
+      const response = await axiosInstance.post(
+        "/conduct-tournament",
+        {formData},{
+          withCredentials: true
+        }
       );
       console.log("Response:", response);
       if (response.status === 200) {

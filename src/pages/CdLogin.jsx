@@ -28,7 +28,7 @@ const CdLogin = () =>{
     console.log('Login submitted:', formData);
     console.log(response);
     if(response.status === 200){
-      navigate("/CommitteeHome")
+      navigate("/user/committeeHome")
     }
   
   }catch (e) {

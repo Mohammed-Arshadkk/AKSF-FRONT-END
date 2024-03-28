@@ -5,18 +5,18 @@ import liverpool from '../assets/liverpool1.png';
 import mm from '../assets/mm.png';
 
 const CommitteeHome = () => {
-  const [PrizeData, setPrizeData] = useState({winnersPrice: '', runnersPrice: ''});
+  // const [PrizeData, setPrizeData] = useState({winnersPrice: '', runnersPrice: ''});
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('http:/localhost:/')
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get('http:/localhost:/')
 
-      } catch (error){
+  //     } catch (error){
 
-      }
-    }
-  })
+  //     }
+  //   }
+  // })
 
   return (
     <div className="bg-white text-white min-h-screen">
@@ -37,8 +37,8 @@ const CommitteeHome = () => {
         {/* Prize Money */}
         <div className="mb-8 text-center bg-gradient-to-r from-cyan-500 to-green-500 ">
           <h2 className="text-2xl font-bold mb-4">Prize Money</h2>
-          <p>Winners: {winnersPrice}</p>
-          <p>Runners-up: {runnersPrice}</p>
+          {/* <p>Winners: {winnersPrice}</p>
+          <p>Runners-up: {runnersPrice}</p> */}
         </div>
 
         {/* Sponsorship Ads */}
